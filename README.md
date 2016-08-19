@@ -55,10 +55,12 @@ Issues / Troubleshooting
 
 #### 1. Pascal GPU + CUDA 7.5를 사용했을 때 GPU 연산 오류
    [extremly-low-accuracy-in-deep-mnist-for-experts-using-pascal-gpu][6] 
+   
    GPU를 사용했을 때 loss 계산에 문제가 발생하여 낮은 accuracy를 출력한다. 같은 코드를 CPU에서 연산하였을 때와 확연한 차이를 보이므로 쉽게 확인 가능하다. CUDA 8.0과 cuDNN 5 설치를 통해 해결 가능하다.
    
 #### 2. TensorFlow r0.10 + CUDA 8.0 사용 시 속도 저하 문제
    [tensorflow/tensorflow#3603][7]
+   
    현재 RC버전인 TensorFlow r0.10 사용 시 연산 속도가 현저히 느려지는 문제로 속도 저하 없이 사용하기 위해서는 TensorFlow r0.9로 설치하여 사용해야한다. 단, TensorFlow r0.9 + CUDA 8.0 빌드 시 cuda-blas.cc 관련 에러가 발생하므로 해당 부분의 패치가 필요하다. 상기 링크된 Dockerfile을 사용할 경우 이미 이 패치를 적용하고 있다.
 
     RUN git checkout master -- tensorflow/stream_executor/cuda/cuda_blas.cc
