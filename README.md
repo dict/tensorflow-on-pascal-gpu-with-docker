@@ -6,11 +6,6 @@ TensorFlow, GTX 10, Pascal, NVIDIA Docker, Known issues, Troubleshooting, Docker
 ----------
 
 
-[TOC]
-
-
-----------
-
  이 포스트에서는 Pascal architecture의 GPU(GTX 10-series) 장치와 Docker 환경에서 TensorFlow 설치 가이드를 소개한다. 현재 CUDA 8.0이 Release Candidate 상태이기 때문에 TensorFlow에서 제공하는 Dockerfile은 CUDA 8.0을 포함하지 않는다(CUDA 7.5, cuDNN 5 사용). 확인된 바로는 Pascal architecture에서 CUDA 7.5를 사용할 경우 설치 및 실행에는 문제가 발생하지 않으나 [MNIST-low-accuracy][1] 등의 GPU 연산 오류가 발생하기 때문에 본 포스트를 통해 CUDA 8.0을 포함하는 Docker를 빌드하는 방법을 제공하고자 한다.
 
 
@@ -43,7 +38,7 @@ Installation Guide
 [nvidia-docker installation guide][4]
 
 #### Dockerfile 빌드
-[다운로드 링크]
+Repository의 Dockerfile, jupyter_notebook_config.py, run_jupyter.sh 다운로드
 Dockerfile은 [TensorFlow][5]에서 제공하는 Dockerfile.devel-gpu에서 CUDA 8.0을 사용하도록 수정하였으며, CUDA 8.0과 tensorflow r0.10 branch를 함께 사용하였을 때 발생하는 속도 저하 이슈를 해결하기 위해 r0.9 branch를 사용하도록 수정하였다.
 수정한 Dockerfile로 직접 빌드하려면 Dockerfile이 저장된 directory에서 아래 명령을 실행한다.
 
